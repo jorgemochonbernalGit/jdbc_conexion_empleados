@@ -11,7 +11,6 @@ import conexion.jdbc.serviceI.empleado.EmpleadoServiceI;
 
 @Repository
 public class EmpleadoService implements EmpleadoServiceI {
-
 	@Autowired
 	EmpleadoDAO empleadoDAO;
 
@@ -26,21 +25,18 @@ public class EmpleadoService implements EmpleadoServiceI {
 	}
 
 	@Override
-	public Empleado newEmpleado(Empleado empleado) {
-		// TODO Auto-generated method stub
-		return null;
+	public int newEmpleado(Empleado empleado) {
+		return empleadoDAO.newEmpleado(empleado);
 	}
 
 	@Override
-	public Empleado update(Empleado empleado) {
-		// TODO Auto-generated method stub
-		return null;
+	public int update(Empleado empleado) {
+		return empleadoDAO.update(empleado);
 	}
 
 	@Override
-	public Empleado deleteEmpleado(Empleado id) {
-		// TODO Auto-generated method stub
-		return null;
+	public int deleteEmpleado(int id) {
+		return empleadoDAO.deleteEmpleado(id);
 	}
 
 }

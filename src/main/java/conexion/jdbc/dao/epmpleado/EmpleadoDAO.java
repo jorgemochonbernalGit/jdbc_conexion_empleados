@@ -29,26 +29,26 @@ public class EmpleadoDAO implements EmpleadoDAOI {
 	public Empleado getEmpleado(int id) {
 		String sql = "SELECT * FROM EMPLEADOS WHERE ID = ?";
 		Empleado empleado;
-		empleado = (Empleado) jdbcTemplate.queryForObject(sql,new EmpleadoConsultaMapper(), id);
+		empleado = (Empleado) jdbcTemplate.queryForObject(sql, new EmpleadoConsultaMapper(), id);
 		return empleado;
 	}
 
 	@Override
-	public Empleado newEmpleado(Empleado empleado) {
-		// TODO Auto-generated method stub
-		return null;
+	public int newEmpleado(Empleado empleado) {
+		String sql = "INSERT INTO EMPLEADOS (nombre) VALUES (?)";
+		return jdbcTemplate.update(sql, empleado.getNombre());
 	}
 
 	@Override
-	public Empleado update(Empleado empleado) {
-		// TODO Auto-generated method stub
-		return null;
+	public int update(Empleado empleado) {
+		String sql = "UPDATE EMPLEADOS SET nombre = ? WHERE id = ?";
+		return jdbcTemplate.update(sql,empleado.getNombre(),empleado.getId());
 	}
 
 	@Override
-	public Empleado deleteEmpleado(Empleado id) {
-		// TODO Auto-generated method stub
-		return null;
+	public int deleteEmpleado(int id) {
+		String sql = "DELETE FROM EMPLEADOS WHERE ID = ?";
+		return jdbcTemplate.update(sql, id);
 	}
 
 }
